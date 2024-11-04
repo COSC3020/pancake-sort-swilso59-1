@@ -31,7 +31,11 @@ answer to this markdown file.
 
 ## Answer 
 
-# In terms of the number of comparisons
-
-- 
-
+1. Comparisons
+   - In our pancakeSort we go through the array from the end to the beginning
+   - Each iteration calls maxIndex to find the largest element in the unsorted portion
+   - we need to find the maxIndex for each remaining portion
+   - This give us $n$ comparisons for each portion of size $n$
+   - This pattern continues till the entire array is sorted.
+   - So we have $n$ iterations and at each iteration we have comparisons matching the size of the unsorted postion this leaves us with
+     a time complexity of $\Theta(n^{2})$
