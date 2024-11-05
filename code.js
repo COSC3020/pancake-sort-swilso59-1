@@ -1,5 +1,5 @@
 function pancakeSort(array) {
-    // define maxIndex to find the index of the maximum element
+    // Define maxIndex to find the index of the maximum element in the first n elements
     const maxIndex = (arr, n) => {
         let maxIdx = 0;
         for (let j = 0; j < n; j++) {
@@ -10,34 +10,39 @@ function pancakeSort(array) {
         return maxIdx;
     };
     
-    // iterate from the end of the array down to the start
+    // Iterate from the end of the array down to the start
     for (let i = array.length; i > 1; i--) {
-        // use the maxIndex to find the max element's index in the unsorted portion
+        // Use maxIndex to find the max element's index in the unsorted portion
         let maxIdx = maxIndex(array, i);
 
-        // if the maximum element is not already in the correct position
+        // If the maximum element is not already in the correct position
         if (maxIdx !== i - 1) {
-            // flip maxIndex to the front if it's not already there
+            // Flip maxIdx to the front if it's not already there
             if (maxIdx !== 0) {
-                flip(array, maxIdx);
+                flip(array, maxIdx + 1);  // Flip the first maxIdx + 1 elements
             }
-            // flip the maximum element to its correct position in the unsorted section
-            flip(array, i - 1);
+            // Flip the maximum element to its correct position in the unsorted section
+            flip(array, i);
         }
     }
     return array; 
 }
 
-// reverses the order of elements in the array from index 0 to index n
+// Reverses the order of elements in the array from index 0 up to index n - 1
 function flip(array, n) {
+    // Ensure n does not exceed the length of the array
+    if (n > array.length) {
+        n = array.length;
+    }
+
     let start = 0;
-    // swap elements from the start and end moving towards the middle
-    while (start < n) {
+    // Swap elements from start to n - 1
+    while (start < n - 1) {
         let temp = array[start];
-        array[start] = array[n];
-        array[n] = temp;
+        array[start] = array[n - 1];
+        array[n - 1] = temp;
         start++;
         n--;
     }
-    return array; 
+    return array;
 }
