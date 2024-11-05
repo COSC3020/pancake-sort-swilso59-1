@@ -26,8 +26,8 @@ function testFlip() {
     flip(array2, 2);  
     console.log(array2);  // Expected output: [2, 1, 3, 4, 5]
     
-    // Test Case 3: Flip the first three elements in the array
-    let array3 = [3, 2, 1, 4, 5];
+    // Test Case 3: Flip the first three elements in the empty array
+    let array3 = [];
     flip(array3, 3);  
     console.log(array3);  // Expected output: [1, 2, 3, 4, 5]
     
