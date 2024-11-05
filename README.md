@@ -32,10 +32,35 @@ answer to this markdown file.
 ## Answer 
 
 1. Comparisons
-   - In our pancakeSort we go through the array from the end to the beginning
+   - In pancakeSort we iterate through the array from the end to the beginning
    - Each iteration calls maxIndex to find the largest element in the unsorted portion
-   - we need to find the maxIndex for each remaining portion
-   - This give us $n$ comparisons for each portion of size $n$
-   - This pattern continues till the entire array is sorted.
-   - So we have $n$ iterations and at each iteration we have comparisons matching the size of the unsorted postion this leaves us with
-     a time complexity of $\Theta(n^{2})$
+   - In the the first iteration we search the entire array. This takes $n$ comparisons
+   - The second iteration we search the array excluding the previous maxIndex, This takes $(n - 1)$ comparisons 
+   - So with $n$ iterations, each requires comparisons proportional to the length of the unsorted section
+   - This leaves us with time complexity of $\Theta(n^{2})$
+
+2. Flips
+   - For each iteraiton of the main for loop there can be up to 2 flips
+      - One flip to move the max element to the front of the array
+      - Another flip to move the max element to the end of the array
+   - The main loop in pancakeSort iterates from the end of the array to the beginning with at most $n - 1$ iterations
+   - With this information we can see that at most there are $2(n - 1)$ flips
+   - As $n$ grows large, the total number of flips is asymptotically linear
+   - This gives us a time complexity of $\Theta(n)$
+  
+For this assignment. I began by focusing on the calls to `flip()`. I knew we would have to make multiple flips to move the max element to its correct position at the end of the array. This lead me to working on a function to find the maxIndex element. Once both of these were set up I created the main pancakesort function that utilizes each operation in order to sort the array. During this I had a little bit of difficulty implementing the `flip()` so that it operates appropriately as it is described in the assignment prompt.
+I also added some test cases to the `code.test.js` file to test that `flip()` is working appropriately. 
+
+I looked at a few repositories. 
+- https://github.com/COSC3020/pancake-sort-swilso59
+- https://github.com/COSC3020/pancake-sort-ross223
+- https://github.com/COSC3020/pancake-sort-ZachRenz
+
+I also looked at some websites to get an idea of the implementation
+- https://www.geeksforgeeks.org/pancake-sorting/
+- https://reintech.io/blog/javascript-pancake-sort-tutorial
+
+“I certify that I have listed all sources used to complete this exercise, including the use
+of any Large Language Models. All of the work is my own, except where stated
+otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is
+suspected, charges may be filed against me without prior notice.”
